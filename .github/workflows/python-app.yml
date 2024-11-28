@@ -1,25 +1,24 @@
-name: run main.py
+name: Python App Scheduled Task
 
 on:
   schedule:
-    # Schedule the task for every Tuesday and Friday at 3:00 AM UTC
-#    - cron: '0 3 * * 2,5'
-     - cron: '*/5 * * * *'
+    # Run every 10 minutes
+    - cron: '*/10 * * * *'
 
 jobs:
-  run_python_task:
+  run-python-script:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout code
+      # Step 1: Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Python
+      # Step 2: Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.9'
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -28,5 +27,5 @@ jobs:
           pip install -r requirements.txt
 
       # Step 4: Run your Python script
-      - name: Run Python Script
-        run: python main.py
+      - name: Execute Python Script
+        run: python src/your_script.py
