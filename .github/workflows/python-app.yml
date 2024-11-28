@@ -28,4 +28,4 @@ jobs:
 
       # Step 4: Run your Python script
       - name: Execute Python Script
-        run: python src/your_script.py
+        run: python main.py
